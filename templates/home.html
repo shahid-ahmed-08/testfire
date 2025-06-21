@@ -1,0 +1,44 @@
+<!-- templates/home.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Predict FWI</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Predict Fire Weather Index (FWI)</h1>
+        <form method="POST" action="/predictdata">
+            <label>Temperature</label>
+            <input type="number" name="Temperature" step="any" required><br>
+            <label>RH</label>
+            <input type="number" name="RH" step="any" required><br>
+            <label>Ws</label>
+            <input type="number" name="Ws" step="any" required><br>
+            <label>Rain</label>
+            <input type="number" name="Rain" step="any" required><br>
+            <label>FFMC</label>
+            <input type="number" name="FFMC" step="any" required><br>
+            <label>DMC</label>
+            <input type="number" name="DMC" step="any" required><br>
+            <label>DC</label>
+            <input type="number" name="DC" step="any" required><br>
+            <label>ISI</label>
+            <input type="number" name="ISI" step="any" required><br>
+            <label>BUI</label>
+            <input type="number" name="BUI" step="any" required><br>
+            <label>Classes (0 = Not Fire, 1 = Fire)</label>
+            <input type="number" name="Classes" required><br>
+            <label>Region (0 = Brjaia, 1 = Sidi-Bel)</label>
+            <input type="number" name="Region" required><br><br>
+            <button type="submit">Predict</button>
+        </form>
+
+        {% if result %}
+            <h2>Predicted FWI: {{ result }}</h2>
+        {% endif %}
+    </div>
+</body>
+</html>
+ 
